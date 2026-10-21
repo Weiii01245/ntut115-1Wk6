@@ -198,37 +198,92 @@ a {
 .vegetable-images {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    min-height: 292px;
     gap: 16px;
     margin-top: 16px;
 }
 
 .vegetable-item {
+    --expanded-height: 292px;
+    display: block;
     min-width: 0;
+    height: 192px;
     margin: 0;
-    text-align: center;
+    overflow: hidden;
+    background: var(--content-bg);
+    transition: height 280ms ease;
 }
 
 .vegetable-item img {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 1;
+    height: 160px;
     object-fit: cover;
-    transition: transform 220ms ease, box-shadow 220ms ease;
+    transition: height 280ms ease;
 }
 
-.vegetable-item figcaption {
-    margin-top: 8px;
+.vegetable-toggle {
+    display: block;
+    width: 100%;
+    height: 32px;
+    padding: 2px 12px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
     color: var(--primary);
+    font-family: inherit;
     font-size: 14px;
-    font-weight: 700;
-    line-height: 20px;
+    font-weight: 900;
+    line-height: 28px;
+    text-align: left;
 }
 
-.hero-image img:hover,
-.vegetable-item img:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 22px rgb(37 48 21 / 22%);
+.vegetable-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.vegetable-description {
+    max-height: 0;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 12px;
+    opacity: 0;
+    color: var(--content-text);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    transition: max-height 280ms ease, opacity 180ms ease, padding 280ms ease;
+}
+
+.vegetable-item.is-expanded {
+    height: var(--expanded-height);
+}
+
+.vegetable-item.is-expanded img {
+    height: 112px;
+}
+
+.vegetable-item.is-expanded .vegetable-description {
+    max-height: 160px;
+    padding: 8px 12px 14px;
+    opacity: 1;
+}
+
+@media (hover: hover) {
+    .vegetable-item:hover {
+        height: var(--expanded-height);
+    }
+
+    .vegetable-item:hover img {
+        height: 112px;
+    }
+
+    .vegetable-item:hover .vegetable-description {
+        max-height: 160px;
+        padding: 8px 12px 14px;
+        opacity: 1;
+    }
 }
 
 .contact-copy {
@@ -336,12 +391,40 @@ a {
     }
 
     .vegetable-images {
+        min-height: 300px;
         gap: 10px;
     }
 
+    .vegetable-item {
+        --expanded-height: 300px;
+        height: 150px;
+    }
+
     .vegetable-item img {
-        height: auto;
-        aspect-ratio: 1;
+        height: 118px;
+    }
+
+    .vegetable-item.is-expanded {
+        height: var(--expanded-height);
+    }
+
+    .vegetable-toggle {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .vegetable-description {
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 11px;
+    }
+
+    .vegetable-item.is-expanded .vegetable-description {
+        padding: 8px 10px 14px;
+    }
+
+    .vegetable-item.is-expanded img {
+        height: 112px;
     }
 }
 
