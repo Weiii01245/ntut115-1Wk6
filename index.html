@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vegetables</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="page">
+        <header class="site-header">
+            <h1>Vegetables</h1>
+            <div class="header-actions">
+                <a class="social-link" href="#" aria-label="Facebook">
+                    <img src="images/vegetable-layout-facebook.png" alt="">
+                </a>
+                <a class="social-link" href="#" aria-label="Instagram">
+                    <img src="images/vegetable-layout-instagram.png" alt="">
+                </a>
+                <span class="header-divider" aria-hidden="true"></span>
+                <button class="account-button" type="button">LOGIN</button>
+                <button class="account-button" type="button">JOIN</button>
+            </div>
+        </header>
+
+        <nav class="navigation" aria-label="Main navigation">
+            <a href="#top">Home</a>
+            <a href="#contact">About Us</a>
+            <a href="#vegetables">Vegetables</a>
+            <a href="#contact">Online</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <main id="top" class="main-content">
+            <figure class="hero-image">
+                <img src="images/vegetable-layout-pumpkin.png" alt="A fresh pumpkin displayed at the market">
+            </figure>
+
+            <div class="content-grid">
+                <section id="vegetables" class="content-section">
+                    <h2>Vegetables</h2>
+                    <div class="vegetable-images">
+                        <article class="vegetable-item">
+                            <img src="images/vegetable-layout-carrot.png" alt="Fresh carrots">
+                            <button class="vegetable-toggle" type="button" aria-expanded="false" aria-controls="carrot-description">Carrot</button>
+                            <p class="vegetable-description" id="carrot-description">Crunchy and naturally sweet, carrots are a colorful addition to everyday meals.</p>
+                        </article>
+                        <article class="vegetable-item">
+                            <img src="images/vegetable-layout-corn.png" alt="Fresh corn">
+                            <button class="vegetable-toggle" type="button" aria-expanded="false" aria-controls="corn-description">Corn</button>
+                            <p class="vegetable-description" id="corn-description">Golden kernels bring a gentle sweetness to soups, salads, and grilled dishes.</p>
+                        </article>
+                        <article class="vegetable-item">
+                            <img src="images/vegetable-layout-pepper.png" alt="Fresh peppers">
+                            <button class="vegetable-toggle" type="button" aria-expanded="false" aria-controls="pepper-description">Pepper</button>
+                            <p class="vegetable-description" id="pepper-description">Bright and crisp peppers add color and a fresh, satisfying crunch to your plate.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="contact" class="content-section contact-section">
+                    <h2>Contact</h2>
+                    <div class="contact-copy">
+                        <p>For any questions or suggestions about Vegetables, Vegetables Club or your online order you can contact Vegetables Customer Service by phone, email or post and we’ll be happy to help.</p>
+                        <hr>
+                        <p class="contact-details">E-mail : Vegetables@aaabbccc.com<br>PHONE : +886-123-456-789</p>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <p>Copyrights 2017 Vegetables cise / Design by Vegetables</p>
+        </footer>
+    </div>
+    <script>
+        document.querySelectorAll(".vegetable-toggle").forEach((toggle) => {
+            toggle.addEventListener("click", () => {
+                const expanded = toggle.getAttribute("aria-expanded") === "true";
+                toggle.setAttribute("aria-expanded", String(!expanded));
+                toggle.closest(".vegetable-item").classList.toggle("is-expanded", !expanded);
+            });
+        });
+    </script>
+</body>
+</html>
